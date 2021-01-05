@@ -18,9 +18,15 @@
 	</style>
 
 	<h1>Hello{{ name }}! ✅</h1>
-	<p>{{city}}</p>
-	<p>{{city | upper}}</p>
-	<p>{{city}}| title</p>
+	{% set item = {"nom": "pomme", "forme": "ronde", "poids": 200 } %}
+
+	<p>Name:
+		{{ item.nom }}</p>
+	<p>Shape:
+		{{ item.forme }}</p>
+	<p>Weight:
+		{{ item.poids }}
+		g.</p>
 
 
 </div>{% endblock %}
