@@ -20,8 +20,9 @@
 	<h1>Hello
 		{{ name }}! ✅</h1>
 	{% for game,multi in games %}
-		<h3>game :{{game}}</h3>
-		<h4>multi :{{multi}}</h4>
+		<h3>{{loop.index + 10}}
+			{{game}}</h3>
+		<h4>{{multi+150}}</h4>
 
 	{% endfor %}
 
