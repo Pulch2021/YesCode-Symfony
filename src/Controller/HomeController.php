@@ -14,14 +14,14 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $user = new stdClass();
-        $user->isConnected = true;
+        $games = ["SuperMario", "Laracraft", "Fifa"];
 
 
         // on transmet tout à la vue , pour l'afficher
         return $this->render('home/index.html.twig', [
-            "name" => "page d'accueil",
-            "user" => $user
+            "name"  => "page d'accueil",
+            "games" => $games
+
 
 
         ]);
