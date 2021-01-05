@@ -14,17 +14,10 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $games = [
-            "SuperMario" => 2,
-            "Laracraft"  => 2,
-            "Fifa"       => 5
-        ];
 
-
-        // on transmet tout à la vue , pour l'afficher
         return $this->render('home/index.html.twig', [
             "name"  => "page d'accueil",
-            "games" => $games
+
 
 
 
