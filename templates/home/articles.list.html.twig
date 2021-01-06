@@ -5,4 +5,13 @@
 
 {% block body %}
 	<h2>Nos Articles</h2>
+	{% if block("footer") %}
+		<p>Tu as refais un footer ? Pk ?</p>
+	{% endif %}
+
+{% endblock %}
+
+{% block footer %}
+	<p>Je suis un footer</p>
+
 {% endblock %}
