@@ -3,10 +3,11 @@
 {% block title %}Accueil
 {% endblock %}
 
-{% block bidule %}
-	<p>Surchage du block bidule de la base</p>
-{% endblock %}
-
 {% block body %}
+
 	<h2>Page d'accueil</h2>
+	<a href="{{ path("articles_list") }}">
+		Vers Les articles
+	</a>
+
 {% endblock %}
