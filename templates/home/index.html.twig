@@ -26,13 +26,19 @@
 	{% set users = {jacques,georges,jade } %}
 
 	{# cela permet de simuler les comportements et anticiper  #}
-	{% for user in users %}
-		<p>
-			Name:
-			{{ user.name}}</p>
-		<p>
-			Age:
-			{{ user.age}}</p>
+
+	{# une boucle sur mon tableau twig(users) comme un ttb venant du controlleren php #}
+		{% for user in users %}
+
+		{# j'utilise un filtre pour que l'affcihe soit correct #}
+			<p>
+			Name:{{ user.name | title}}
+		</p>
+
+			<p>
+			Age:{{ user.age}}
+		</p>
+		{% else %}
 
 
 	{% endfor %}
