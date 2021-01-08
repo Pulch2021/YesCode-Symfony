@@ -16,12 +16,21 @@ class HomeController extends AbstractController
      */
     public function index(EntityManagerInterface $manager): Response
     {
-        // sans injestion de dépendance , donc retirer l'injection
+        // sans injection de dépendance , donc retirer l'injection
         // $manager = $this->getDoctrine()->getManager();
         $fraise = new Fruit();
-        $fraise->setName("fraise");
+        $ananas = new fruit();
 
+
+        $fraise->setName("fraise");
+        $ananas->setName("ananas");
+
+
+        // dit à doctrine on veut sauvegarder l'objet fruit
         $manager->persist($fraise);
+        $manager->persist($ananas);
+
+        // flush pour tout | exéccute la requête
         $manager->flush();
 
 
