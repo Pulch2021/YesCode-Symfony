@@ -15,16 +15,10 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home_page")
      */
-    public function index(FruitRepository $repo): Response
+    public function index(): Response
     {
-        $fruits = $repo->findAll();
-
-        dump($fruits);
 
 
-        return $this->render('home/index.html.twig', [
-
-            "fruits" => $fruits
-        ]);
+        return $this->render('home/index.html.twig', []);
     }
 }

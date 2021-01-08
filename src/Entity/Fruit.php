@@ -18,9 +18,16 @@ class Fruit
     private $id;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $poids;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+
+
+
 
     public function getId(): ?int
     {
@@ -35,6 +42,18 @@ class Fruit
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getPoids(): ?int
+    {
+        return $this->poids;
+    }
+
+    public function setPoids(int $poids): self
+    {
+        $this->poids = $poids;
 
         return $this;
     }
