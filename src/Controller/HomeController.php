@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Faker;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,10 +18,18 @@ class HomeController extends AbstractController
     {
         $articles = $repo->findLastArtciles(4);
 
-        dump($articles);
+        $faker = Faker\Factory::create('fr_FR');
+        $intro = $faker->paragraph(2);
+        $contenu = ["pomme", "poire", "figue", "grenade", "test"];
+        $content = "<p>" . implode("</p><p>", $faker->paragraphs(7)) . "</p>";
+        dump($faker->paragraphs(7));
+
+
 
         return $this->render('home/index.html.twig', [
-            "articles" => $articles
+            "articles" => $articles,
+
+
         ]);
     }
 }
