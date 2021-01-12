@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Faker;
+use Cocur\Slugify\Slugify;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,28 +17,22 @@ class HomeController extends AbstractController
      */
     public function index(ArticleRepository $repo): Response
     {
+
         $articles = $repo->findLastArticles(3);
 
-        $faker = Faker\Factory::create('fr_FR');
+        $slugify = new Slugify();
 
-        // $title = $faker->sentence(2);
+        $title = "La théorie £ % 4 4 { é # des cordes à Linges * Gravitionnelles";
 
-        // $intro = $faker->paragraph(2);
+        $slug = $slugify->slugify($title);
 
-        // $contenu = ["pomme", "poire", "figue", "grenade", "test"];
+        dump($slug);
 
-        $content = "<p>" . implode("</p><p>" , $faker->paragraphs(7) ) . "</p>";
 
-        $createdAt =  $faker->dateTimeBetween('- 3 months') ;
 
-        dump( $createdAt );
-
-        $image = "https://picsum.photos/400/300";
-        
         return $this->render('home/index.html.twig', [
             "articles" => $articles,
-            "image" => $image,
-            "content" => $content
+
         ]);
     }
-    
+}
