@@ -28,32 +28,48 @@ class ArticleController extends AbstractController
     /**
      * @Route("/articles/new", name="article_create")
      */
-    public function create(Request $request,EntityManagerInterface $manager )
+    public function create(Request $request, EntityManagerInterface $manager)
     {
         $article = new Article();
 
         $form = $this->createForm(ArticleType::class, $article);
 
         $form->handleRequest($request);
+
+
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $article = $form->getData();
             $manager->persist($article);
+
             $manager->flush();
-        
+
+            $this->addFlash('success', 'Larticle a été créé');
+
+
+            return $this->redirectToRoute('articles_show', [
+                'slug' => $article->getSlug()
+            ]);
+        }
 
         return $this->render('article/create.html.twig', [
             'form' => $form->createView()
         ]);
     }
+
     /**
-     * @Route("/articles/slug", name="articles_show")
+     * @Route("/articles/{slug}", name="articles_show")
      */
-    public function show($slug, ArticleRepository $articleRepository): Response
+    public function show($slug, ArticleRepository $articleRepository)
     {
 
         $article = $articleRepository->findOneBySlug($slug);
 
+
+
         return $this->render('article/show.html.twig', [
             'article' => $article
+
         ]);
     }
 }
