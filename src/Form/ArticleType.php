@@ -18,6 +18,7 @@ class ArticleType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'label' => 'Le titre de votre article',
+                'required' => false,
                 'attr'  => ['placeholder' => 'Tapez votre titre ici !']
             ])
             ->add('intro', TextType::class, [
